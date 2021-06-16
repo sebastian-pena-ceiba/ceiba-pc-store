@@ -1,4 +1,4 @@
-rootProject.name = 'PcStoreOriginal'
+rootProject.name = 'PcStore'
 
 include ':infraestructura'
 include ':aplicacion'
