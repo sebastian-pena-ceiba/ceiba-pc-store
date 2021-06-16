@@ -1,0 +1,21 @@
+jasypt:
+   encryptor:
+      password: ${jasyptpwd:secretkey}
+      algorithm: PBEWithMD5AndDES
+
+server:
+   port: 
+   servlet:
+      context-path: /PcStore
+      session:
+         timeout: 21600s
+
+spring:
+   datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbcUrl: jdbc:mysql://localhost:3306/test
+      username: root
+      password: toor
+      hikari:
+         poolName: pool
