@@ -157,7 +157,7 @@ public class CreateOrderServiceTest {
      * Validate the shipping date when create a normal order.
      */
     @Test
-    public void validPlaceOrderShippingDate_WithNoBuildingServiceTest() {
+    public void validCreateOrderShippingDate_WithNoBuildingServiceTest() {
 
         // default order
         OrderTestDataBuilder orderBuilder = new OrderTestDataBuilder();
@@ -181,7 +181,7 @@ public class CreateOrderServiceTest {
      * Validate the shipping date when create an order with build service.
      */
     @Test
-    public void validPlaceOrderShippingDate_WithBuildingServiceTest() {
+    public void validCreateOrderShippingDate_WithBuildingServiceTest() {
 
         // order with build service option (and all components to work OK)
         OrderTestDataBuilder orderBuilder = new OrderTestDataBuilder()
