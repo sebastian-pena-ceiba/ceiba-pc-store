@@ -1,5 +1,6 @@
 package com.ceiba.pcstore.port.repository;
 
+import com.ceiba.pcstore.model.dto.OrderDto;
 import com.ceiba.pcstore.model.entity.Order;
 
 public interface IOrderRepository {
@@ -27,7 +28,7 @@ public interface IOrderRepository {
      * @param id
      * @return
      */
-    Order findOrderById(Long id);
+    OrderDto findOrderById(Long id);
 
     /**
      * find and order by its tracking code.
@@ -35,7 +36,7 @@ public interface IOrderRepository {
      * @param trackingCode
      * @return
      */
-    Order findOrderByTrackingCode(String trackingCode);
+    OrderDto findOrderByTrackingCode(String trackingCode);
 
     /**
      * Validate if an order exists by its id.

@@ -1,4 +1,4 @@
-package com.ceiba.pcstore.model.entity.dao;
+package com.ceiba.pcstore.model.dto;
 
 import com.ceiba.pcstore.model.entity.BuyerData;
 import com.ceiba.pcstore.model.entity.Component;
@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDao {
+public class OrderDto {
 
     private Long id;
     private Boolean buildService;

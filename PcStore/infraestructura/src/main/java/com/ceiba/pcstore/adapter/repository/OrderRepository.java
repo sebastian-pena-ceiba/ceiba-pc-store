@@ -2,7 +2,9 @@ package com.ceiba.pcstore.adapter.repository;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import com.ceiba.pcstore.adapter.repository.mapper.OrderDtoMapper;
 import com.ceiba.pcstore.adapter.repository.mapper.OrderMapper;
+import com.ceiba.pcstore.model.dto.OrderDto;
 import com.ceiba.pcstore.model.entity.Order;
 import com.ceiba.pcstore.port.repository.IOrderRepository;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -72,21 +74,23 @@ public class OrderRepository implements IOrderRepository {
     }
 
     @Override
-    public Order findOrderById(Long id) {
+    public OrderDto findOrderById(Long id) {
 
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlSelectById, paramSource, new OrderMapper());
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlSelectById, paramSource, new OrderDtoMapper());
     }
 
     @Override
-    public Order findOrderByTrackingCode(String trackingCode) {
+    public OrderDto findOrderByTrackingCode(String trackingCode) {
 
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("trackingCode", trackingCode);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlSelectById, paramSource, new OrderMapper());
+        // TODO: get buyer data and order components
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlSelectByTrackingCode, paramSource, new OrderDtoMapper());
     }
 
     @Override

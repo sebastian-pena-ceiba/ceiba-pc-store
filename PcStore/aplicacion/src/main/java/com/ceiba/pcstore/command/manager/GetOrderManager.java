@@ -1,5 +1,6 @@
 package com.ceiba.pcstore.command.manager;
 
+import com.ceiba.pcstore.model.dto.OrderDto;
 import com.ceiba.pcstore.model.entity.Order;
 import com.ceiba.pcstore.service.GetOrderService;
 import org.springframework.stereotype.Component;
@@ -13,7 +14,7 @@ public class GetOrderManager {
         this.getOrderService = getOrderService;
     }
 
-    public Order ejecutar(String trackingCode) {
+    public OrderDto ejecutar(String trackingCode) {
         return getOrderService.execute(trackingCode);
     }
 

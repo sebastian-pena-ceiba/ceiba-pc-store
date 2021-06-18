@@ -1,5 +1,6 @@
 package com.ceiba.pcstore.service;
 
+import com.ceiba.pcstore.model.dto.OrderDto;
 import com.ceiba.pcstore.model.entity.Order;
 import com.ceiba.pcstore.port.repository.IOrderRepository;
 
@@ -15,7 +16,7 @@ public class GetOrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Order execute(String trackingCode) {
+    public OrderDto execute(String trackingCode) {
 
         validarObligatorio(trackingCode, MESSAGE_TRACKING_CODE_REQUIRED);
 
