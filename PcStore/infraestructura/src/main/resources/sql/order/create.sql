@@ -1,2 +1,2 @@
 insert into t_order (build_service, placement_date, shipping_date, status, tracking_code, buyer_data_id, order_price)
-  values (:buildService, :placementDate, :shippingDate, :status, :trackingCode, buyerDataId, orderPrice)
+  values (:buildService, :placementDate, :shippingDate, :status, :trackingCode, :buyerDataId, :orderPrice)

@@ -6,6 +6,8 @@ import com.ceiba.pcstore.adapter.repository.mapper.OrderMapper;
 import com.ceiba.pcstore.model.entity.Order;
 import com.ceiba.pcstore.port.repository.IOrderRepository;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -38,15 +40,23 @@ public class OrderRepository implements IOrderRepository {
     @Override
     public Order createOrder(Order order) {
 
-        Long id = this.customNamedParameterJdbcTemplate.crear(order, sqlCreate);
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("buildService", order.getBuildService());
+        paramSource.addValue("placementDate", order.getPlacementDate());
+        paramSource.addValue("shippingDate", order.getShippingDate());
+        paramSource.addValue("status", order.getStatus());
+        paramSource.addValue("trackingCode", order.getTrackingCode());
+        paramSource.addValue("buyerDataId", order.getBuyerData().getId());
+        paramSource.addValue("orderPrice", order.getOrderPrice());
 
-        return new Order(
-                id,
-                order.getBuildService(),
-                order.getTrackingCode(),
-                order.getBuyerData(),
-                order.getOrderComponents()
-        );
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlCreate, paramSource, keyHolder, new String[] { "id" } ); //this.customNamedParameterJdbcTemplate.crear(order, sqlCreate);
+        Long id = keyHolder.getKey().longValue();
+
+        order.setId(id);
+
+        return order;
     }
 
     @Override

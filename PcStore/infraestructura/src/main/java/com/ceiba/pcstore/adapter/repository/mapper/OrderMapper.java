@@ -14,13 +14,11 @@ public class OrderMapper implements RowMapper<Order>, MapperResult {
 
         Long id = rs.getLong("id");
         Boolean buildService = rs.getBoolean("type");
-        String trackingCode = rs.getString("name");
 
         // TODO: order dto
         return new Order(
                 id,
                 buildService,
-                trackingCode,
                 null,
                 null
         );
