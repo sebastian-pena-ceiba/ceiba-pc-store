@@ -1,0 +1,1 @@
+select id, name, id_number, email, phone_number, address from buyer_data where id = :id
