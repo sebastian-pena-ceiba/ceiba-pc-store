@@ -104,7 +104,7 @@ public class OrderTestDataBuilder {
     }
 
     public Order build() {
-        return new Order(this.id, this.buildService, this.trackingCode, this.buyerData, this.orderComponents);
+        return new Order(this.id, this.buildService, this.buyerData, this.orderComponents);
     }
 
 }
