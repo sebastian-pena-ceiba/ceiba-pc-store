@@ -46,4 +46,8 @@ public class Component {
         this.price = price;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

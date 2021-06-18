@@ -40,4 +40,8 @@ public class BuyerData {
         this.address = address;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

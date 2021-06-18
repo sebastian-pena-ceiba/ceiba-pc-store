@@ -77,6 +77,10 @@ public class Order {
         this.trackingCode = UUID.randomUUID().toString();
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     /**
      * Update to next status.
      */
