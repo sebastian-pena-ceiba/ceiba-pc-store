@@ -38,7 +38,7 @@ public class BeanServicio {
     public GetComponentService getComponentService(IComponentRepository componentRepository) {
         return new GetComponentService(componentRepository);
     }
-    
+
 
     @Bean
     public ServicioCrearUsuario servicioCrearUsuario(RepositorioUsuario repositorioUsuario) {
