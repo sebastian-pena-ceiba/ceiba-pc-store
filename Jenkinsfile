@@ -66,7 +66,7 @@ pipeline {
       steps {
         echo "------------>Build<------------"
         //Construir sin tarea test que se ejecutó previamente
-        sh 'gradle --b ./PcStore/build.gradle build -x test'
+        sh 'gradle --b ./PcStore/infraestructura/build.gradle build -x test'
       }
     }  
   }
