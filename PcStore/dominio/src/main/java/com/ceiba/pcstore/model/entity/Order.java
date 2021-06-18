@@ -6,10 +6,7 @@ import lombok.Getter;
 import java.math.BigDecimal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static com.ceiba.dominio.ValidadorArgumento.validarNoVacio;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
@@ -34,7 +31,7 @@ public class Order {
     private List<Component> orderComponents;
     private BigDecimal orderPrice;
 
-    public Order(Long id, Boolean buildService, String trackingCode, BuyerData buyerData, List<Component> orderComponents) {
+    public Order(Long id, Boolean buildService, BuyerData buyerData, List<Component> orderComponents) {
 
         // valid component list is not empty
         validarObligatorio(orderComponents, MESSAGE_COMPONENTS_REQUIRED);
@@ -48,7 +45,6 @@ public class Order {
         // General setting fields
         this.id = id;
         this.buildService = buildService;
-        this.trackingCode = trackingCode;
         this.buyerData = buyerData;
 
         // set variables internally
@@ -76,6 +72,9 @@ public class Order {
         // calculate shipping date
         int daysForShipping = this.buildService ? 5 : 2;
         this.shippingDate = addDaysWithoutWeekends(this.placementDate, daysForShipping);
+
+        // generate tracking code
+        this.trackingCode = UUID.randomUUID().toString();
     }
 
     /**

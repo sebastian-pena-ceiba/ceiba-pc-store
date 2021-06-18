@@ -38,7 +38,6 @@ public class OrderFactory {
         return new Order(
                 orderCommand.getId(),
                 orderCommand.getBuildService(),
-                orderCommand.getTrackingCode(),
                 buyerData,
                 componentList
         );
