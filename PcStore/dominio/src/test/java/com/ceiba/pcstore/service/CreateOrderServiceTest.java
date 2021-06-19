@@ -16,10 +16,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CreateOrderServiceTest {
-    
+
     /**
      * Validate create an order with one component
      */
@@ -118,6 +119,28 @@ public class CreateOrderServiceTest {
 
         // assert
         assertEquals(expectedTotalPrice, createdOrder.getOrderPrice());
+    }
+
+    @Test
+    public void validCreateOrderTrackingCode_WithDefaultData() {
+
+        // arrange
+        Order order = new OrderTestDataBuilder()
+                .withId(null)
+                .build();
+
+        OrderDto orderDto = new OrderDtoTestDataBuilder()
+                .withTrackingCode(order.getTrackingCode())
+                .build();
+        IOrderRepository orderRepository = Mockito.mock(IOrderRepository.class);
+        Mockito.when(orderRepository.createOrder(order)).thenReturn(orderDto);
+        CreateOrderService createOrderService = new CreateOrderService(orderRepository);
+
+        // act
+        OrderDto createdOrder = createOrderService.execute(order);
+
+        // assert
+        assertNotNull(createdOrder.getTrackingCode());
     }
 
 }
