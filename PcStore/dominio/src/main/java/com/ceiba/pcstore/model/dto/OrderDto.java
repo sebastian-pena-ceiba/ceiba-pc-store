@@ -1,6 +1,5 @@
 package com.ceiba.pcstore.model.dto;
 
-import com.ceiba.pcstore.model.entity.BuyerData;
 import com.ceiba.pcstore.model.entity.Component;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +20,7 @@ public class OrderDto {
     private Boolean buildService;
     private LocalDate placementDate;
     private LocalDate shippingDate;
+    private LocalDate deliveredDate;
     private String status;
     private String trackingCode;
     private String buyerName;

@@ -25,6 +25,7 @@ public class Order {
     private Boolean buildService;
     private LocalDate placementDate;
     private LocalDate shippingDate;
+    private LocalDate deliveredDate;
     private String status;
     private String trackingCode;
     private BuyerData buyerData;
@@ -73,6 +74,9 @@ public class Order {
         int daysForShipping = this.buildService ? 5 : 2;
         this.shippingDate = addDaysWithoutWeekends(this.placementDate, daysForShipping);
 
+        // calculate delivered date
+        this.deliveredDate = addDaysWithoutSundays(shippingDate, 1);
+
         // generate tracking code
         this.trackingCode = UUID.randomUUID().toString();
     }
@@ -82,6 +86,7 @@ public class Order {
     }
 
     /**
+     * TODO: eliminar esta funcion si no se usa
      * Update to next status.
      */
     public void setNextStatus() {
@@ -97,11 +102,12 @@ public class Order {
     }
 
     /**
+     * //TODO: eliminar si no se usa
      * Calculate the delivered date if the order was delivered.
      *
      * @return  the calculated delivered date or null if not delivered
      */
-    public LocalDate getDeliveredDate() {
+    public LocalDate getCalculatedDeliveredDate() {
 
         if (status.equals(STATUS_DELIVERED)) {
             return addDaysWithoutSundays(shippingDate, 1);

@@ -49,6 +49,7 @@ public class OrderRepository implements IOrderRepository {
         paramSource.addValue("buildService", order.getBuildService());
         paramSource.addValue("placementDate", order.getPlacementDate());
         paramSource.addValue("shippingDate", order.getShippingDate());
+        paramSource.addValue("deliveredDate", order.getDeliveredDate());
         paramSource.addValue("status", order.getStatus());
         paramSource.addValue("trackingCode", order.getTrackingCode());
         paramSource.addValue("buyerDataId", order.getBuyerData().getId());
@@ -103,8 +104,6 @@ public class OrderRepository implements IOrderRepository {
 
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("trackingCode", trackingCode);
-
-        // TODO: get order components
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlSelectByTrackingCode, paramSource, new OrderDtoMapper());
     }

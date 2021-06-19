@@ -16,9 +16,9 @@ public class OrderDtoMapper implements RowMapper<OrderDto>, MapperResult {
 
         Long id = rs.getLong("id");
         Boolean buildService = rs.getBoolean("build_service");
-
         LocalDate placementDate = extraerLocalDateTime(rs, "placement_date").toLocalDate();
         LocalDate shippingDate = extraerLocalDateTime(rs, "shipping_date").toLocalDate();
+        LocalDate deliveredDate = extraerLocalDateTime(rs, "delivered_date").toLocalDate();
         String status = rs.getString("status");
         String trackingCode = rs.getString("tracking_code");
         String buyerName = rs.getString("b.name");
@@ -33,6 +33,7 @@ public class OrderDtoMapper implements RowMapper<OrderDto>, MapperResult {
                 buildService,
                 placementDate,
                 shippingDate,
+                deliveredDate,
                 status,
                 trackingCode,
                 buyerName,

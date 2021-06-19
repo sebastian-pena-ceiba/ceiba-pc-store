@@ -29,6 +29,7 @@ create table t_order(
     build_service boolean not null default 0,
     placement_date datetime not null,
     shipping_date date not null,
+    delivered_date date not null,
     status varchar(10) not null,
     tracking_code varchar(100) not null,
     buyer_data_id bigint not null,
