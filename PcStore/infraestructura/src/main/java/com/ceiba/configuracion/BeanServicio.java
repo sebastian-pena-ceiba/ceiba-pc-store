@@ -30,6 +30,11 @@ public class BeanServicio {
     }
 
     @Bean
+    public GetOrderComponentsService getOrderComponentsService(IComponentRepository componentRepository) {
+        return new GetOrderComponentsService(componentRepository);
+    }
+
+    @Bean
     public GetComponentListService getComponentListService(IComponentRepository componentRepository) {
         return new GetComponentListService(componentRepository);
     }

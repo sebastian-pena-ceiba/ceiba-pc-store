@@ -39,10 +39,6 @@ public class CreateOrderManager implements ManejadorComandoRespuesta<OrderComman
         OrderDto createdOrder = createOrderService.execute(order);
 
         return new ComandoRespuesta<>(createdOrder);
-
-//        orderCommand.setId(createdOrder.getId());
-//
-//        return new ComandoRespuesta<>(orderCommand);
     }
 
 }

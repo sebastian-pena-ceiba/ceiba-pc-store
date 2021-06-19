@@ -70,7 +70,11 @@ public class OrderRepository implements IOrderRepository {
             this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlComponentRelationship, paramSource2);
         });
 
-        return this.findOrderById(id);
+        // set the component list to the dto
+        OrderDto resultOrder = this.findOrderById(id);
+        resultOrder.setOrderComponents(order.getOrderComponents());
+
+        return resultOrder;
     }
 
     @Override
@@ -100,7 +104,7 @@ public class OrderRepository implements IOrderRepository {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("trackingCode", trackingCode);
 
-        // TODO: get buyer data and order components
+        // TODO: get order components
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlSelectByTrackingCode, paramSource, new OrderDtoMapper());
     }
