@@ -10,9 +10,9 @@ public class BuyerData {
 
     private static final int MIN_ID_NUMBER_LENGTH = 7;
 
-    private static final String MESSAGE_NAME_IS_REQUIRED = "The name field is required";
-    private static final String MESSAGE_ID_NUMBER_IS_REQUIRED = "The id number is required";
-    private static final String MESSAGE_ID_NUMBER_LENGTH = "The id number length must be bigger than " + MIN_ID_NUMBER_LENGTH + " digits";
+    private static final String MESSAGE_NAME_IS_REQUIRED = "The buyer name field is required";
+    private static final String MESSAGE_ID_NUMBER_IS_REQUIRED = "The buyer id number is required";
+    private static final String MESSAGE_ID_NUMBER_LENGTH = "The buyer id number length must be bigger than " + MIN_ID_NUMBER_LENGTH + " digits";
     private static final String MESSAGE_PHONE_NUMBER_IS_REQUIRED = "A phone number must be provided";
     private static final String MESSAGE_ADDRESS_IS_REQUIRED = "The address is required";
 

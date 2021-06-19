@@ -9,13 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
+
 @org.springframework.stereotype.Component
 public class OrderFactory {
+
+    private static final String MESSAGE_COMPONENTS_REQUIRED = "Almost one component is required to place an order";
 
     @Autowired
     private ComponentFactory componentFactory;
 
     public Order create(OrderCommand orderCommand) {
+
+        // validation
+        validarObligatorio(orderCommand.getOrderComponents(), MESSAGE_COMPONENTS_REQUIRED);
 
         // create BuyerData
         BuyerData buyerData = new BuyerData(

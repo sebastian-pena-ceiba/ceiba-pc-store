@@ -12,6 +12,7 @@ repositories {
 dependencies {
 
 	implementation project(':dominio')
+	implementation project(':comun:comun-dominio')
 	implementation project(':comun:comun-aplicacion')
 	implementation project.ext.springtxt
 
