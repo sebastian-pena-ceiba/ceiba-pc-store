@@ -1,0 +1,1 @@
+select id, type, name, price from component c inner join order_component oc on c.id = oc.component_id where oc.order_id = :orderId

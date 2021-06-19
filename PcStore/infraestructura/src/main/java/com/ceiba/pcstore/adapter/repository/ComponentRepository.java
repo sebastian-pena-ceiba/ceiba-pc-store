@@ -21,6 +21,9 @@ public class ComponentRepository implements IComponentRepository {
     @SqlStatement(namespace="component", value="listByType")
     private static String sqlListByType;
 
+    @SqlStatement(namespace="component", value="listByOrder")
+    private static String sqlListByOrder;
+
     @SqlStatement(namespace = "component", value = "selectById")
     private static String sqlSelectById;
 
@@ -40,6 +43,15 @@ public class ComponentRepository implements IComponentRepository {
         paramSource.addValue("id", id);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlSelectById, paramSource, new ComponentMapper());
+    }
+
+    @Override
+    public List<Component> findAllComponentsByOrder(Long orderId) {
+
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("orderId", orderId);
+
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListByOrder, paramSource, new ComponentMapper());
     }
 
     @Override

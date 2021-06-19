@@ -22,6 +22,14 @@ public interface IComponentRepository {
     Component findComponentById(Long id);
 
     /**
+     * Find all components associate to an order.
+     *
+     * @param orderId
+     * @return
+     */
+    List<Component> findAllComponentsByOrder(Long orderId);
+
+    /**
      * Get all components by a specific type.
      *
      * @param type
