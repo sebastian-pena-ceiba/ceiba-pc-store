@@ -1,4 +1,4 @@
-package com.ceiba.pcstore.service.testdatabuilder;
+package com.ceiba.pcstore.testdatabuilder;
 
 import com.ceiba.pcstore.model.entity.Component;
 

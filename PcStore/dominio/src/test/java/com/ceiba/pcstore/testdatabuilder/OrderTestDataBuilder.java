@@ -1,4 +1,4 @@
-package com.ceiba.pcstore.service.testdatabuilder;
+package com.ceiba.pcstore.testdatabuilder;
 
 import com.ceiba.pcstore.model.entity.BuyerData;
 import com.ceiba.pcstore.model.entity.Component;
@@ -13,7 +13,6 @@ public class OrderTestDataBuilder {
 
     private Long id;
     private Boolean buildService;
-    private String trackingCode;
     private BuyerData buyerData;
     private List<Component> orderComponents;
 
@@ -21,7 +20,6 @@ public class OrderTestDataBuilder {
 
         this.id = 1L;
         this.buildService = false;
-        this.trackingCode = null;
         this.buyerData = new BuyerData(
                 1L,
                 "Fulanito",
@@ -47,7 +45,6 @@ public class OrderTestDataBuilder {
     }
 
     public OrderTestDataBuilder withTrackingCode(String trackingCode) {
-        this.trackingCode = trackingCode;
         return this;
     }
 
