@@ -21,7 +21,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public ComandoRespuesta<OrderCommand> createOrder(@RequestBody OrderCommand orderCommand) {
+    public ComandoRespuesta<OrderDto> createOrder(@RequestBody OrderCommand orderCommand) {
         return createOrderManager.ejecutar(orderCommand);
     }
 

@@ -18,6 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CreateOrderServiceTest {
 
+    // TODO: pasar tests de instaciamiento de Order a OrderTest
+
     /**
      * Valid order creation with null component list
      */

@@ -1,6 +1,7 @@
 package com.ceiba.pcstore.service;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.pcstore.model.dto.OrderDto;
 import com.ceiba.pcstore.model.entity.Order;
 import com.ceiba.pcstore.port.repository.IOrderRepository;
 
@@ -14,7 +15,7 @@ public class CreateOrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Order execute(Order order) {
+    public OrderDto execute(Order order) {
 
         validateIfOrderExists(order);
         return orderRepository.createOrder(order);

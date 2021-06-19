@@ -1,0 +1,1 @@
+insert into order_component (order_id, component_id) values (:orderId, :componentId)

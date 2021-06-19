@@ -35,12 +35,15 @@ public class OrderRepository implements IOrderRepository {
     @SqlStatement(namespace="order", value="existsByTrackingCode")
     private static String sqlExistsByTrackingCode;
 
+    @SqlStatement(namespace = "order", value = "createComponentRelation")
+    private static String sqlComponentRelationship;
+
     public OrderRepository(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
     @Override
-    public Order createOrder(Order order) {
+    public OrderDto createOrder(Order order) {
 
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("buildService", order.getBuildService());
@@ -53,16 +56,25 @@ public class OrderRepository implements IOrderRepository {
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlCreate, paramSource, keyHolder, new String[] { "id" } ); //this.customNamedParameterJdbcTemplate.crear(order, sqlCreate);
+        // save the order
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlCreate, paramSource, keyHolder, new String[] { "id" } );
         Long id = keyHolder.getKey().longValue();
 
-        order.setId(id);
+        // save the order_component relationship
+        order.getOrderComponents().forEach(component -> {
 
-        return order;
+            MapSqlParameterSource paramSource2 = new MapSqlParameterSource();
+            paramSource2.addValue("orderId", id);
+            paramSource2.addValue("componentId", component.getId());
+
+            this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlComponentRelationship, paramSource2);
+        });
+
+        return this.findOrderById(id);
     }
 
     @Override
-    public Order updateOrderStatusById(Long id, String status) {
+    public OrderDto updateOrderStatusById(Long id, String status) {
 
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
@@ -70,7 +82,7 @@ public class OrderRepository implements IOrderRepository {
 
         this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlUpdateStatus, paramSource);
 
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlSelectById, paramSource, new OrderMapper());
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlSelectById, paramSource, new OrderDtoMapper());
     }
 
     @Override

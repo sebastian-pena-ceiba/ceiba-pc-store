@@ -4,6 +4,7 @@ import com.ceiba.ComandoRespuesta;
 import com.ceiba.manejador.ManejadorComandoRespuesta;
 import com.ceiba.pcstore.command.OrderCommand;
 import com.ceiba.pcstore.command.factory.OrderFactory;
+import com.ceiba.pcstore.model.dto.OrderDto;
 import com.ceiba.pcstore.model.entity.BuyerData;
 import com.ceiba.pcstore.model.entity.Order;
 import com.ceiba.pcstore.service.CreateBuyerDataService;
@@ -11,7 +12,7 @@ import com.ceiba.pcstore.service.CreateOrderService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CreateOrderManager implements ManejadorComandoRespuesta<OrderCommand, ComandoRespuesta<OrderCommand>> {
+public class CreateOrderManager implements ManejadorComandoRespuesta<OrderCommand, ComandoRespuesta<OrderDto>> {
 
     private OrderFactory orderFactory;
     private CreateOrderService createOrderService;
@@ -24,7 +25,7 @@ public class CreateOrderManager implements ManejadorComandoRespuesta<OrderComman
     }
 
     @Override
-    public ComandoRespuesta<OrderCommand> ejecutar(OrderCommand orderCommand) {
+    public ComandoRespuesta<OrderDto> ejecutar(OrderCommand orderCommand) {
 
         // get the order from the command data
         Order order = orderFactory.create(orderCommand);
@@ -35,11 +36,13 @@ public class CreateOrderManager implements ManejadorComandoRespuesta<OrderComman
         // update buyerData id
         order.getBuyerData().setId(createBuyerData.getId());
 
-        Order createdOrder = createOrderService.execute(order);
+        OrderDto createdOrder = createOrderService.execute(order);
 
-        orderCommand.setId(createdOrder.getId());
+        return new ComandoRespuesta<>(createdOrder);
 
-        return new ComandoRespuesta<>(orderCommand);
+//        orderCommand.setId(createdOrder.getId());
+//
+//        return new ComandoRespuesta<>(orderCommand);
     }
 
 }

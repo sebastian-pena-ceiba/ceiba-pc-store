@@ -11,7 +11,7 @@ public interface IOrderRepository {
      * @param order
      * @return
      */
-    Order createOrder(Order order);
+    OrderDto createOrder(Order order);
 
     /**
      * Update the order status by its id.
@@ -20,7 +20,7 @@ public interface IOrderRepository {
      * @param status
      * @return
      */
-    Order updateOrderStatusById(Long id, String status);
+    OrderDto updateOrderStatusById(Long id, String status);
 
     /**
      * Find an order by its id.
