@@ -86,37 +86,6 @@ public class Order {
     }
 
     /**
-     * TODO: eliminar esta funcion si no se usa
-     * Update to next status.
-     */
-    public void setNextStatus() {
-
-        switch (status) {
-            case STATUS_PROCESSING:
-                status = STATUS_SHIPPED;
-                break;
-            case STATUS_SHIPPED:
-                status = STATUS_DELIVERED;
-                break;
-        }
-    }
-
-    /**
-     * //TODO: eliminar si no se usa
-     * Calculate the delivered date if the order was delivered.
-     *
-     * @return  the calculated delivered date or null if not delivered
-     */
-    public LocalDate getCalculatedDeliveredDate() {
-
-        if (status.equals(STATUS_DELIVERED)) {
-            return addDaysWithoutSundays(shippingDate, 1);
-        }
-
-        return null;
-    }
-
-    /**
      * Validate if there are all type of component in the list.
      *
      * NOTE: this method don't validate if there are duplicate components.

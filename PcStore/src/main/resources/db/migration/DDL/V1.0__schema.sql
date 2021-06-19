@@ -27,7 +27,7 @@ create table buyer_data(
 create table t_order(
     id bigint not null auto_increment,
     build_service boolean not null default 0,
-    placement_date datetime not null,
+    placement_date date not null,
     shipping_date date not null,
     delivered_date date not null,
     status varchar(10) not null,
