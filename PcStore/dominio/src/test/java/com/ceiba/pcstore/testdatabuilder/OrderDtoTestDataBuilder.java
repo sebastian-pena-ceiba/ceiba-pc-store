@@ -18,6 +18,7 @@ public class OrderDtoTestDataBuilder {
     private Boolean buildService;
     private LocalDate placementDate;
     private LocalDate shippingDate;
+    private LocalDate deliveredDate;
     private String status;
     private String trackingCode;
     private String buyerName;
@@ -34,6 +35,7 @@ public class OrderDtoTestDataBuilder {
         this.buildService = false;
         this.placementDate = LocalDate.now();
         this.shippingDate = LocalDate.now();
+        this.deliveredDate = LocalDate.now();
         this.status = Order.STATUS_PROCESSING;
         this.trackingCode = "asd123ads";
         this.buyerName = "Joseph Smith";
@@ -66,6 +68,11 @@ public class OrderDtoTestDataBuilder {
 
     public OrderDtoTestDataBuilder withShippingDate(LocalDate shippingDate) {
         this.shippingDate = shippingDate;
+        return this;
+    }
+
+    public OrderDtoTestDataBuilder withDeliveredDate(LocalDate deliveredDate) {
+        this.deliveredDate = deliveredDate;
         return this;
     }
 
@@ -147,6 +154,7 @@ public class OrderDtoTestDataBuilder {
                 this.buildService,
                 this.placementDate,
                 this.shippingDate,
+                this.deliveredDate,
                 this.status,
                 this.trackingCode,
                 this.buyerName,
