@@ -21,11 +21,11 @@ public class OrderDtoMapper implements RowMapper<OrderDto>, MapperResult {
         LocalDate deliveredDate = extraerLocalDateTime(rs, "delivered_date").toLocalDate();
         String status = rs.getString("status");
         String trackingCode = rs.getString("tracking_code");
-        String buyerName = rs.getString("b.name");
-        Integer buyerIdNumber = rs.getInt("b.id_number");
-        String buyerEmail = rs.getString("b.email");
-        String buyerPhoneNumber = rs.getString("b.phone_number");
-        String buyerAddress = rs.getString("b.address");
+        String buyerName = rs.getString("name");
+        Integer buyerIdNumber = rs.getInt("id_number");
+        String buyerEmail = rs.getString("email");
+        String buyerPhoneNumber = rs.getString("phone_number");
+        String buyerAddress = rs.getString("address");
         BigDecimal orderPrice = rs.getBigDecimal("order_price");
 
         return new OrderDto(

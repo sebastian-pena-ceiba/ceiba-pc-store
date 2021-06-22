@@ -5,7 +5,6 @@ import com.ceiba.pcstore.command.OrderCommand;
 import com.ceiba.pcstore.command.manager.CreateOrderManager;
 import com.ceiba.pcstore.command.manager.GetOrderManager;
 import com.ceiba.pcstore.model.dto.OrderDto;
-import com.ceiba.pcstore.model.entity.Order;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
