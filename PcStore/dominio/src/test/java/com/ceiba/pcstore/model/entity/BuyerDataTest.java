@@ -19,7 +19,9 @@ public class BuyerDataTest {
 
         // act - assert
         Exception exception = assertThrows(Exception.class, () -> {
-
+            BuyerData buyerData = new BuyerData(
+                    1L,null, 1098765432, null, "3210987654", "av 1 cra 2"
+            );
         });
         assertEquals(exceptionExpectedMessage, exception.getMessage());
     }
