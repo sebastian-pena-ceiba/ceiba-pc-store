@@ -76,13 +76,10 @@ public class GetOrderService {
      */
     private void setNextStatus(OrderDto orderDto) {
 
-        switch (orderDto.getStatus()) {
-            case Order.STATUS_PROCESSING:
-                orderDto.setStatus(Order.STATUS_SHIPPED);
-                break;
-            case Order.STATUS_SHIPPED:
-                orderDto.setStatus(Order.STATUS_DELIVERED);
-                break;
+        if (Order.STATUS_PROCESSING.equals(orderDto.getStatus())) {
+            orderDto.setStatus(Order.STATUS_SHIPPED);
+        } else if (Order.STATUS_SHIPPED.equals(orderDto.getStatus())) {
+            orderDto.setStatus(Order.STATUS_DELIVERED);
         }
     }
 
