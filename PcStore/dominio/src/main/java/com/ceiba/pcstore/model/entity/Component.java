@@ -18,7 +18,7 @@ public class Component {
     public static final String TYPE_CASE = "Case";
     public static final String TYPE_GRAPHIC_CARD = "Graphic Card";
 
-    public static final List<String> TYPE_LIST = Arrays.asList(TYPE_BOARD, TYPE_CPU, TYPE_RAM, TYPE_STORAGE,
+    protected static final List<String> TYPE_LIST = Arrays.asList(TYPE_BOARD, TYPE_CPU, TYPE_RAM, TYPE_STORAGE,
             TYPE_PSU, TYPE_CASE, TYPE_GRAPHIC_CARD);
 
     private static final String MESSAGE_INVALID_TYPE = "The component type is not valid";
