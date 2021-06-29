@@ -2,7 +2,6 @@ package com.ceiba.pcstore.command.manager;
 
 import com.ceiba.pcstore.model.dto.OrderDto;
 import com.ceiba.pcstore.model.entity.Component;
-import com.ceiba.pcstore.model.entity.Order;
 import com.ceiba.pcstore.service.GetOrderComponentsService;
 import com.ceiba.pcstore.service.GetOrderService;
 

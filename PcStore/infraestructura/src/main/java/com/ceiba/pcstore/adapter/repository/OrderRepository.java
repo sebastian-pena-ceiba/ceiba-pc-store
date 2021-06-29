@@ -3,7 +3,6 @@ package com.ceiba.pcstore.adapter.repository;
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.pcstore.adapter.repository.mapper.OrderDtoMapper;
-import com.ceiba.pcstore.adapter.repository.mapper.OrderMapper;
 import com.ceiba.pcstore.model.dto.OrderDto;
 import com.ceiba.pcstore.model.entity.Order;
 import com.ceiba.pcstore.port.repository.IOrderRepository;
