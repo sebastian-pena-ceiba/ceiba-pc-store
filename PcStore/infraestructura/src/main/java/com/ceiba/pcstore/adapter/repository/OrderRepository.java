@@ -16,6 +16,8 @@ public class OrderRepository implements IOrderRepository {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
+    private static final String TRACKING_CODE_PARAM = "trackingCode";
+
     @SqlStatement(namespace="order", value="create")
     private static String sqlCreate;
 
@@ -50,7 +52,7 @@ public class OrderRepository implements IOrderRepository {
         paramSource.addValue("shippingDate", order.getShippingDate());
         paramSource.addValue("deliveredDate", order.getDeliveredDate());
         paramSource.addValue("status", order.getStatus());
-        paramSource.addValue("trackingCode", order.getTrackingCode());
+        paramSource.addValue(TRACKING_CODE_PARAM, order.getTrackingCode());
         paramSource.addValue("buyerDataId", order.getBuyerData().getId());
         paramSource.addValue("orderPrice", order.getOrderPrice());
 
@@ -102,7 +104,7 @@ public class OrderRepository implements IOrderRepository {
     public OrderDto findOrderByTrackingCode(String trackingCode) {
 
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("trackingCode", trackingCode);
+        paramSource.addValue(TRACKING_CODE_PARAM, trackingCode);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlSelectByTrackingCode, paramSource, new OrderDtoMapper());
     }
@@ -120,7 +122,7 @@ public class OrderRepository implements IOrderRepository {
     public Boolean existOrderByTrackingCode(String trackingCode) {
 
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("trackingCode", trackingCode);
+        paramSource.addValue(TRACKING_CODE_PARAM, trackingCode);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistsByTrackingCode, paramSource, Boolean.class);
     }
